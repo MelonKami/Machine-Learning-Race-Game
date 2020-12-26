@@ -152,6 +152,12 @@ def clear_map():
     global config
     config['map'] = []
 
+def reset_cars():
+    print('reset cars')
+    for x in range(len(cars)):
+        car = cars[x]
+        car.kill()
+
 def save_map():
     with open('map.json', 'w') as File:
         json.dump(config, File, indent=4, default=lambda o: o.__dict__)
@@ -178,7 +184,7 @@ if __name__ == '__main__':
                 pygame.quit()
                 sys.exit()
             
-        text = font.render(f'E to quit game - Hold G to enter map editor mode - R to reset Map - O to save current map - P to create car instance - Cars: {len(cars)}', True, [255,255,255])
+        text = font.render(f'E to quit game - Hold G to enter map editor mode - R to reset Map - O to save current map - P to create car instance - Cars Spawned: {len(cars)}', True, [255,255,255])
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_e]:
@@ -191,6 +197,9 @@ if __name__ == '__main__':
             save_map()
         if keys[pygame.K_p]:
             create_car()
+        if keys[pygame.K_h]:
+            reset_cars()
+
 
         pygame.time.delay(FPS)
         window.fill(black)
