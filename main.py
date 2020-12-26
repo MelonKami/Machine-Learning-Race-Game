@@ -214,5 +214,4 @@ if __name__ == '__main__':
             
             pygame.draw.line(window, ([255, 255, 255]), (pos1.x, pos1.y), (pos2.x, pos2.y))
 
-        # player1.draw()
         pygame.display.update()
