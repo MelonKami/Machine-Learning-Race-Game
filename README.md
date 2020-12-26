@@ -8,8 +8,9 @@ This project was something I started to get into simple ML in python, in it's cu
 
 # Key binds:
 
-1. E to quit game 
-2. Hold G to use map editor mode (Left click for adding lines(This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game)
-3. R to reset Map 
-4. O to save current map 
-5. P to create car instance 
+1. E - to quit game 
+2. G - hold to use map editor mode (Left click for adding lines (This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game)
+3. H - Resets all the cars
+4. R - to reset Map 
+5. O - to save current map 
+6. P - to create car instance 
