@@ -34,6 +34,25 @@ def rot_center(image, rect, angle):
         return rot_image,rot_rect
 
 
+def where_does_lines_intersect(start_first, end_first, start_second, end_second):
+    x1 = start_first.x
+    y1 = start_first.y
+    x2 = end_first.x
+    y2 = end_first.y
+    x3 = start_second.x
+    y3 = start_second.y
+    x4 = end_second.x
+    y4 = end_second.y
+    uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1))
+    uB = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1))
+
+    if (uA >= 0 and uA <= 1 and uB >= 0 and uB <= 1):
+        intersectionX = x1 + (uA * (x2-x1))
+        intersectionY = y1 + (uA * (y2-y1))
+        return Vector2(intersectionX, intersectionY)
+        
+    return None
+
 class Car:
     def __init__(self, spawn: Vector2):
         self.spawn = spawn
@@ -73,8 +92,9 @@ class Car:
         pygame.draw.line(window, ([255,0,0]), (self.spawn.x, self.spawn.y + size[1]), (self.spawn.x, self.spawn.y))
 
 
-    def distance_to_wall(self):
-        pass
+    
+    
+
 
 
     def does_collide(self, pos_start, pos_end):
@@ -206,6 +226,7 @@ if __name__ == '__main__':
         window.blit(text, (20, 20))
         if len(cars) > 0:
             for car in cars:
+                #car.distance_to_wall(pos1, pos2)
                 car.update()
                 car.draw()
 
