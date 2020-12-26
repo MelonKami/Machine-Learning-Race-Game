@@ -1,16 +1,22 @@
 # Machine Learning Race Game!
 
-This project was something I started to get into simple ML in python, in it's current state it's just a very simple top-down view car game, but eventually I'll add a Neural Network to it!
+This project was something I started, to get into simple ML in python, in it's current state it's just a very simple top-down view car game, but eventually I'll add a Neural Network to it!
 
 # Keep in mind:
 
-1. The collision detection is kinda weird with the cars, the collision math is designed for rect to line, so the hitbox gets bigger when the car gets an angle, and smaller when it's horizontally or vertically, it tries to make the rect as small as possible
+1. The collision detection is kinda weird with the cars, the collision math is designed for rect to line, so the hitbox gets bigger when the car gets an angle, and smaller when it's horizontally or vertically, it tries to make the rect as small as possible, which is why it shrinks when it can
+
+2. I am absolutely no professional and I am creating this to test out what I can create with ML and have fun xD
 
 # Key binds:
 
-1. E - to quit game 
-2. G - hold to use map editor mode (Left click for adding lines (This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game)
-3. H - Resets all the cars
-4. R - to reset Map 
-5. O - to save current map 
-6. P - to create car instance 
+* E - to quit game 
+
+* G - hold to use map editor mode (Left click for adding lines (This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game)
+
+* H - Resets all the cars
+* R - to reset Map 
+
+* O - to save current map 
+
+* P - to create car instance 
