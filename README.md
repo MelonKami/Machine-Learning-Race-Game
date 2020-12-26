@@ -15,6 +15,7 @@ This project was something I started, to get into simple ML in python, in it's c
 * G - hold to use map editor mode (Left click for adding lines (This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game)
 
 * H - Resets all the cars
+
 * R - to reset Map 
 
 * O - to save current map 
