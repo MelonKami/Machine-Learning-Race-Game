@@ -10,6 +10,8 @@ This project was something I started, to get into simple ML in python, in it's c
 
 ## Key binds: 
 
+* Here's a list of the current keybinds that are in-game
+
 | Keybinds      | Description     |
 | :------------- | :------------------------------ | 
 | E | Quits game and exites window |
@@ -18,6 +20,10 @@ This project was something I started, to get into simple ML in python, in it's c
 | R | Resets Map |
 | O | Saves current map |
 | P | Creates car instance |
+| W | Car goes forward |
+| S | Car goes backward |
+| A | Car goes left |
+| D | Car goes right |
 
 <!-- * E - to quit game 
 
