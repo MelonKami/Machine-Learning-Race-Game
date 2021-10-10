@@ -13,7 +13,7 @@ This project was something I started, to get into simple ML in python, in it's c
 * Here's a list of the current keybinds that are in-game
 
 | Keybinds      | Description     |
-| :------------- | :------------------------------ | 
+| :------------ | :------------------------------ | 
 | E | Quits game and exites window |
 | G | Hold to use map editor mode (Left click for adding lines (This will automatically have collision in it), it then converts the coordinates from a tuple into the map.json file, where it will later get added when you launch the game) |
 | H | Resets all the cars |

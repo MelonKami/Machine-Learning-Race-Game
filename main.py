@@ -91,12 +91,6 @@ class Car:
         pygame.draw.line(window, ([255,0,0]), (self.spawn.x + size[0], self.spawn.y + size[1]), (self.spawn.x, self.spawn.y + size[1]))
         pygame.draw.line(window, ([255,0,0]), (self.spawn.x, self.spawn.y + size[1]), (self.spawn.x, self.spawn.y))
 
-
-    
-    
-
-
-
     def does_collide(self, pos_start, pos_end):
         if not self.is_driving:
             return False
@@ -143,6 +137,87 @@ class Car:
         top = lineLine(_x1,_y1,_x2,_y2, _rx,_ry, _rx+_rw,_ry)
         bottom = lineLine(_x1,_y1,_x2,_y2, _rx,_ry+_rh, _rx+_rw,_ry+_rh)
         return left or right or top or bottom
+    
+    def distance_to_wall_right(self):
+
+        for x in range(len(config['map'])):
+            next = x+1
+            if next == len(config['map']):
+                next = 0
+            pos1 = config['map'][x]
+            pos2 = config['map'][next]
+
+            if self.spawn.x < pos1.x and pos2.x:
+                for n in range(pos1.y, pos2.y):
+                    if int(self.spawn.y) == n:
+                        y = n
+                if int(self.spawn.y) in range(pos1.y, pos2.y):
+                    pygame.draw.rect(window, (0, 255, 0), (pos1.x, pos1.y, 10, pos2.y), width=2)
+                    dist = math.sqrt((pos1.x-self.spawn.x)**2 + (y-self.spawn.y)**2)
+
+                    print(dist)
+                    pygame.draw.rect(window, (0, 255, 0), (self.spawn.x, self.spawn.y, dist, 1), width=2)
+
+    def distance_to_wall_left(self):
+
+        for x in range(len(config['map'])):
+            next = x+1
+            if next == len(config['map']):
+                next = 0
+            pos1 = config['map'][x]
+            pos2 = config['map'][next]
+
+            if self.spawn.x > pos1.x and pos2.x:
+                for n in range(pos1.y, pos2.y):
+                    if int(self.spawn.y) == n:
+                        y = n
+                if int(self.spawn.y) in range(pos1.y, pos2.y):
+                    pygame.draw.rect(window, (0, 255, 0), (pos1.x, pos1.y, 10, pos2.y), width=2)
+                    dist = math.sqrt((pos1.x-self.spawn.x)**2 + (y-self.spawn.y)**2)
+
+                    print(dist)
+                    pygame.draw.rect(window, (0, 255, 0), (self.spawn.x, self.spawn.y, -dist, 1), width=2)
+
+    def distance_to_wall_up(self):
+
+        for x in range(len(config['map'])):
+            next = x+1
+            if next == len(config['map']):
+                next = 0
+            pos1 = config['map'][x]
+            pos2 = config['map'][next]
+
+            if self.spawn.x < pos1.x and pos2.x:
+                for n in range(pos1.y, pos2.y):
+                    if int(self.spawn.y) == n:
+                        y = n
+                if int(self.spawn.y) in range(pos1.y, pos2.y):
+                    pygame.draw.rect(window, (0, 255, 0), (pos1.x, pos1.y, 10, pos2.y), width=2)
+                    dist = math.sqrt((pos1.x-self.spawn.x)**2 + (y-self.spawn.y)**2)
+
+                    print(dist)
+                    pygame.draw.rect(window, (0, 255, 0), (self.spawn.x, self.spawn.y, dist, 1), width=2)
+
+    def distance_to_wall_down(self):
+
+        for x in range(len(config['map'])):
+            next = x+1
+            if next == len(config['map']):
+                next = 0
+            pos1 = config['map'][x]
+            pos2 = config['map'][next]
+
+            if self.spawn.x < pos1.x and pos2.x:
+                for n in range(pos1.y, pos2.y):
+                    if int(self.spawn.y) == n:
+                        y = n
+                if int(self.spawn.y) in range(pos1.y, pos2.y):
+                    pygame.draw.rect(window, (0, 255, 0), (pos1.x, pos1.y, 10, pos2.y), width=2)
+                    dist = math.sqrt((pos1.x-self.spawn.x)**2 + (y-self.spawn.y)**2)
+
+                    print(dist)
+                    pygame.draw.rect(window, (0, 255, 0), (self.spawn.x, self.spawn.y, dist, 1), width=2)
+
 
     def kill(self):
         print('Killed')
@@ -227,6 +302,8 @@ if __name__ == '__main__':
         if len(cars) > 0:
             for car in cars:
                 #car.distance_to_wall(pos1, pos2)
+                car.distance_to_wall_right()
+                car.distance_to_wall_left()
                 car.update()
                 car.draw()
 
@@ -241,6 +318,9 @@ if __name__ == '__main__':
                 car = cars[x]
                 if car.does_collide(pos1, pos2):
                     car.kill()
+                    cars.remove(car)
+                    break
+                
             
             pygame.draw.line(window, ([255, 255, 255]), (pos1.x, pos1.y), (pos2.x, pos2.y))
 
